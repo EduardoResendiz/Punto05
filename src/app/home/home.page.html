@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center titulo">
+     FUNCIONES DE FUNCIONALIDAD Y RESPONSABILIDAD
+    </ion-title>
+    <ion-item-divider color="light">
+        <ion-label >5.SASISOPA </ion-label>
+      </ion-item-divider>
+  </ion-toolbar>
+  <ion-item-divider color="secondary" class="ion-text-center">
+    <ion-label >
+      Datos del encargado de la estacion
+    </ion-label>
+  </ion-item-divider>
+</ion-header>
+
+<ion-content>
+
+<form #formulario="ngForm" (ngSubmit)="enviarForm(formulario)">
+      
+      <ion-list>
+        <ion-item-divider></ion-item-divider>
+        <ion-item>
+          <ion-label>Fecha</ion-label>
+          <ion-datetime name='fecha' value="2019-07-04" placeholder="Selecione la Fecha"   ngModel></ion-datetime>
+        </ion-item> 
+      </ion-list>
+     
+     
+     
+      <ion-item>
+        <ion-label position="floating" >Nombre</ion-label>
+        <ion-input name='nombreEncargado' placeholder="Nombre del encargado" ngModel required  ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating" >Correo Electronico</ion-label>
+        <ion-input name='correo' placeholder="Gmail,Outlook" ngModelrequired  ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="floating" >Telefono</ion-label>
+        <ion-input name='telefono' placeholder="Telefono celular o fijo" ngModel required ></ion-input>
+      </ion-item>
+      
+      <ion-item-divider color="secondary" class="ion-text-center">
+        <ion-label >
+          Datos de la estacion
+        </ion-label>
+      </ion-item-divider>
+
+      <ion-item>
+        <ion-label position="floating" >Razon Social</ion-label>
+        <ion-input name='razonSocial' placeholder="Razon Social de la estacion" ngModel required ></ion-input>
+      </ion-item>
+      
+    
+        <ion-item>
+          <ion-label>Ingresa tu CP</ion-label>
+          <ion-input type="number" name="cp"  required (ionChange)="cambio($event)" ></ion-input>
+        </ion-item>
+      
+
+      <ion-item>
+
+        <ion-label position="floating" >Calle y numero</ion-label>
+        <ion-input name='direcion' placeholder="ejem, bugambilias #321"  required  ngModel></ion-input>
+      </ion-item>
+
+      <p name="estado" >Estado: {{respuestaCP.estado}}</p>
+      <p name="municipio">Municipio: {{respuestaCP.municipio}}</p>
+      <p>Colonias:</p>
+      <select>
+        <option *ngFor="let colonia of respuestaCP.colonias" name="colonia">{{colonia}}</option>
+      </select>
+      
+      <div>
+
+      </div>
+      <ion-button type="submit">
+        Enviar Form
+      </ion-button>  
+      <ion-button (click)="pdf()">
+        DEscargar 
+      </ion-button>
+     
+</form>
+
+</ion-content>
